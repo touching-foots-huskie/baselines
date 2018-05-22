@@ -32,7 +32,7 @@ def make_mujoco_env(env_id, seed):
     """
     set_global_seeds(seed)
     env = gym.make(env_id)
-    env = Monitor(env, logger.get_dir())
+    env = Monitor(env, logger.get_dir(), allow_early_resets=True)  # use to show result midterm
     env.seed(seed)
     return env
 

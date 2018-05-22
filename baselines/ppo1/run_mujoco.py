@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-from baselines.common.cmd_util import make_mujoco_env, mujoco_arg_parser
-from baselines.common import tf_util as U
 from baselines import logger
+from baselines.common import tf_util as U
+from baselines.common.cmd_util import make_mujoco_env, mujoco_arg_parser
+
 
 def train(env_id, num_timesteps, seed):
     from baselines.ppo1 import mlp_policy, pposgd_simple
@@ -20,10 +21,12 @@ def train(env_id, num_timesteps, seed):
         )
     env.close()
 
+
 def main():
     args = mujoco_arg_parser().parse_args()
     logger.configure()
-    train(args.env, num_timesteps=args.num_timesteps, seed=args.seed)
+    train('Reacher-v2', num_timesteps=1e6, seed=0)
+
 
 if __name__ == '__main__':
     main()

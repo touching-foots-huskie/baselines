@@ -8,6 +8,7 @@ from baselines.common.mpi_moments import mpi_moments
 from mpi4py import MPI
 from collections import deque
 
+
 def traj_segment_generator(pi, env, horizon, stochastic):
     t = 0
     ac = env.action_space.sample() # not used, just so we have the datatype
@@ -41,6 +42,7 @@ def traj_segment_generator(pi, env, horizon, stochastic):
             # several of these batches, then be sure to do a deepcopy
             ep_rets = []
             ep_lens = []
+        # this part: merge ac and take out ob
         i = t % horizon
         obs[i] = ob
         vpreds[i] = vpred

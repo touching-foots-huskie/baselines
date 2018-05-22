@@ -1,6 +1,8 @@
 __all__ = ['Monitor', 'get_monitor_files', 'load_results']
 
 import gym
+import pandas
+import os
 from gym.core import Wrapper
 import time
 from glob import glob
@@ -139,7 +141,7 @@ def load_results(dir):
 def test_monitor():
     env = gym.make("CartPole-v1")
     env.seed(0)
-    mon_file = "/tmp/baselines-test-%s.monitor.csv" % uuid.uuid4()
+    mon_file = "/tmp/baselines-test-%s.monitor.csv"  # uuid.uuid4()
     menv = Monitor(env, mon_file)
     menv.reset()
     for _ in range(1000):
